@@ -8,7 +8,7 @@ public class Conta {
     String cpf;
     
     String visualizarSaldo() {
-        return Double.toString(this.saldo );
+        return Double.toString(this.saldo);
     }
     
     void depositar(double deposito) {
@@ -16,15 +16,22 @@ public class Conta {
     }
     
     boolean sacar(double saque) {
-        if (this.saldo < saque) {
-            return false;
+        boolean resposta;
+        if (this.saldo < saque) {   
+            resposta =  false;
         } else {
             this.saldo = this.saldo - saque;
-            return true;
+            resposta =  true;
         }
+        return resposta;
     }
     
-    void transferirDinheiro() {
-    
+    boolean transferirDinheiro(double valor, Conta contaDestino) {
+       boolean resposta = false;
+        if(this.sacar(valor) == true) {
+           contaDestino.depositar(valor);
+           resposta = true;
+       }
+        return resposta;
     }
 }
