@@ -3,9 +3,8 @@ package aula4;
 public class Conta {
     
     String numeroConta;
-    String titular;
     double saldo;
-    String cpf;
+    Cliente cliente;
     
     String visualizarSaldo() {
         return Double.toString(this.saldo);
